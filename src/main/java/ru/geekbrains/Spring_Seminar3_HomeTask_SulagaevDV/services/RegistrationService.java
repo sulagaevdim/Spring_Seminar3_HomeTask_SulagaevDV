@@ -13,8 +13,10 @@ public class RegistrationService {
     @Autowired
     private NotificationService notificationService;
 
-    public void registrtionUser(User user){
-
+    public void registrationUser(User user){
+        userService.createUser(user.getName(), user.getAge(), user.getEmail());
+        dataProcessingService.addUserToList(user);
+        notificationService.notifyUser(user);
     }
 
     public DataProcessingService getDataProcessingService() {
